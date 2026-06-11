@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ADMSOC — Dark luxury design system. All colors HSL. */
+
+@layer base {
+  :root {
+    /* Deep blacks & charcoals */
+    --background: 0 0% 4%;
+    --foreground: 40 20% 92%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 40 20% 92%;
+
+    /* Gold — signature accent */
+    --primary: 42 55% 58%;
+    --primary-foreground: 0 0% 6%;
+    --primary-glow: 45 80% 70%;
+    --primary-deep: 38 60% 38%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 40 20% 92%;
+
+    --muted: 0 0% 9%;
+    --muted-foreground: 40 8% 60%;
+
+    --accent: 42 55% 58%;
+    --accent-foreground: 0 0% 6%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 40 15% 16%;
+    --input: 0 0% 10%;
+    --ring: 42 55% 58%;
+
+    --radius: 0.25rem;
+
+    /* Semantic gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(45 80% 70%) 0%, hsl(42 55% 58%) 50%, hsl(38 60% 38%) 100%);
+    --gradient-radial-gold: radial-gradient(circle at 50% 50%, hsl(42 55% 58% / 0.15) 0%, transparent 70%);
+    --gradient-fade-bottom: linear-gradient(to bottom, transparent 0%, hsl(0 0% 4%) 100%);
+    --gradient-fade-top: linear-gradient(to top, transparent 0%, hsl(0 0% 4%) 100%);
+    --gradient-vignette: radial-gradient(ellipse at center, transparent 40%, hsl(0 0% 0% / 0.85) 100%);
+
+    /* Shadows */
+    --shadow-gold: 0 10px 40px -10px hsl(42 55% 58% / 0.4);
+    --shadow-deep: 0 30px 80px -20px hsl(0 0% 0% / 0.8);
+
+    /* Transitions */
+    --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-slow: 1.2s var(--ease-luxury);
+    --transition-base: 0.6s var(--ease-luxury);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02";
+  }
+  ::selection {
+    @apply bg-primary/30 text-primary-foreground;
+  }
+}
+
+@layer utilities {
+  .font-serif { font-family: 'Cormorant Garamond', serif; }
+  .font-sans { font-family: 'Inter', system-ui, sans-serif; }
+
+  .text-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-gold { background: var(--gradient-gold); }
+  .bg-radial-gold { background: var(--gradient-radial-gold); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
+  .shadow-deep { box-shadow: var(--shadow-deep); }
+
+  .tracking-luxury { letter-spacing: 0.32em; }
+  .tracking-wider-2 { letter-spacing: 0.18em; }
+
+  /* Reveal-on-scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s var(--ease-luxury), transform 1.2s var(--ease-luxury);
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+  .reveal-delay-4 { transition-delay: 0.6s; }
+
+  .gold-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, hsl(var(--primary)), transparent);
+  }
+
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes ken-burns {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.12) translate(-1%, -1%); }
+  }
+  .animate-ken-burns {
+    animation: ken-burns 18s ease-out forwards;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
+}
