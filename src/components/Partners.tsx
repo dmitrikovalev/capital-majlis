@@ -11,22 +11,27 @@ import h24 from "@/assets/partners/24h-series.png";
 import gulfNews from "@/assets/partners/gulf-news.png";
 import adSports from "@/assets/partners/ad-sports.png";
 
+// Sizes and opacity are normalized by optical mass, not by height:
+// bold wide marks (Brabus, 24H) get a lower cap, thin or stacked marks
+// (A2RL, Lamborghini) a higher one — so every logo reads at the same scale.
 const partners = [
-  { src: mclaren, name: "McLaren Abu Dhabi" },
-  // Lamborghini is a tall, stacked mark — give it a larger cap so it reads at the same scale as the wide wordmarks
-  { src: lamborghini, name: "Lamborghini Abu Dhabi & Dubai", cls: "max-h-16 md:max-h-20" },
-  { src: yasMarina, name: "Yas Marina Circuit" },
-  { src: brabus, name: "Brabus Middle East" },
-  { src: a2rl, name: "Abu Dhabi Autonomous Racing League" },
-  { src: liwa, name: "Liwa International Festival" },
-  { src: alForsan, name: "Al Forsan" },
-  { src: h24, name: "24H Series" },
+  { src: mclaren, name: "McLaren Abu Dhabi", img: "max-h-11 md:max-h-14 opacity-55" },
+  { src: lamborghini, name: "Lamborghini Abu Dhabi & Dubai", img: "max-h-16 md:max-h-20 opacity-55" },
+  { src: yasMarina, name: "Yas Marina Circuit", img: "max-h-11 md:max-h-14 opacity-55" },
+  { src: brabus, name: "Brabus Middle East", img: "max-h-9 md:max-h-11 opacity-50" },
+  { src: a2rl, name: "Abu Dhabi Autonomous Racing League", img: "max-h-12 md:max-h-[60px] opacity-60" },
+  { src: liwa, name: "Liwa International Festival", img: "max-h-11 md:max-h-14 opacity-55" },
+  { src: alForsan, name: "Al Forsan", img: "max-h-11 md:max-h-14 opacity-55" },
+  { src: h24, name: "24H Series", img: "max-h-8 md:max-h-10 opacity-50" },
 ];
 
 const press = [
-  { src: gulfNews, name: "Gulf News" },
-  { src: adSports, name: "Abu Dhabi Sports TV" },
+  { src: gulfNews, name: "Gulf News", img: "max-h-10 md:max-h-12" },
+  { src: adSports, name: "Abu Dhabi Sports TV", img: "max-h-9 md:max-h-10" },
 ];
+
+const crossesY = ["top-0", "top-1/2", "top-full"];
+const crossesX = ["left-1/4", "left-1/2", "left-3/4"];
 
 const Partners = () => {
   const ref = useReveal<HTMLDivElement>();
@@ -45,20 +50,39 @@ const Partners = () => {
           }
         />
 
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-border/60">
-          {partners.map((p) => (
-            <div
-              key={p.name}
-              className="aspect-[3/2] flex items-center justify-center bg-background hover:bg-card transition-colors duration-700 group p-6"
-            >
-              <img
-                src={p.src}
-                alt={p.name}
-                loading="lazy"
-                className={`${p.cls ?? "max-h-10 md:max-h-12"} max-w-[78%] w-auto object-contain opacity-45 group-hover:opacity-95 transition-opacity duration-700`}
-              />
-            </div>
-          ))}
+        <div className="mt-20 relative">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border/60">
+            {partners.map((p) => (
+              <div
+                key={p.name}
+                className="relative aspect-[3/2] flex items-center justify-center bg-background hover:bg-card transition-colors duration-700 group p-6"
+              >
+                <img
+                  src={p.src}
+                  alt={p.name}
+                  loading="lazy"
+                  className={`${p.img} max-w-[78%] w-auto object-contain group-hover:opacity-95 transition-opacity duration-700`}
+                />
+                <span className="pointer-events-none absolute inset-x-0 bottom-4 px-3 text-center text-[10px] tracking-luxury uppercase text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  {p.name}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* gold crosses on the inner grid intersections */}
+          {crossesY.map((y) =>
+            crossesX.map((x) => (
+              <span
+                key={`${y}-${x}`}
+                aria-hidden
+                className={`hidden md:block pointer-events-none absolute ${y} ${x} w-[11px] h-[11px] -translate-x-1/2 -translate-y-1/2 text-primary/60`}
+              >
+                <span className="absolute left-0 right-0 top-1/2 h-px bg-current" />
+                <span className="absolute top-0 bottom-0 left-1/2 w-px bg-current" />
+              </span>
+            ))
+          )}
         </div>
       </div>
 
@@ -71,7 +95,7 @@ const Partners = () => {
               src={p.src}
               alt={p.name}
               loading="lazy"
-              className="max-h-9 md:max-h-10 w-auto object-contain opacity-40 hover:opacity-90 transition-opacity duration-700"
+              className={`${p.img} w-auto object-contain opacity-50 hover:opacity-90 transition-opacity duration-700`}
             />
           ))}
         </div>
