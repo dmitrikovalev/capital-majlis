@@ -2,8 +2,8 @@ import SectionHeading from "./SectionHeading";
 import { useReveal } from "@/hooks/use-reveal";
 import trackImg from "@/assets/track.jpg";
 import convoyImg from "@/assets/convoy.jpg";
-import majlisImg from "@/assets/majlis.jpg";
-import carImg from "@/assets/car-detail.jpg";
+import majlisImg from "@/assets/lifestyle.jpg";
+import carImg from "@/assets/private-car-meets.jpg";
 
 const items = [
   {

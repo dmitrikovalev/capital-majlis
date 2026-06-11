@@ -13,7 +13,8 @@ import adSports from "@/assets/partners/ad-sports.png";
 
 const partners = [
   { src: mclaren, name: "McLaren Abu Dhabi" },
-  { src: lamborghini, name: "Lamborghini Abu Dhabi & Dubai" },
+  // Lamborghini is a tall, stacked mark — give it a larger cap so it reads at the same scale as the wide wordmarks
+  { src: lamborghini, name: "Lamborghini Abu Dhabi & Dubai", cls: "max-h-16 md:max-h-20" },
   { src: yasMarina, name: "Yas Marina Circuit" },
   { src: brabus, name: "Brabus Middle East" },
   { src: a2rl, name: "Abu Dhabi Autonomous Racing League" },
@@ -54,7 +55,7 @@ const Partners = () => {
                 src={p.src}
                 alt={p.name}
                 loading="lazy"
-                className="max-h-10 md:max-h-12 max-w-[78%] w-auto object-contain opacity-45 group-hover:opacity-95 transition-opacity duration-700"
+                className={`${p.cls ?? "max-h-10 md:max-h-12"} max-w-[78%] w-auto object-contain opacity-45 group-hover:opacity-95 transition-opacity duration-700`}
               />
             </div>
           ))}
