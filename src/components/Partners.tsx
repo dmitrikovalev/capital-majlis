@@ -2,6 +2,8 @@ import SectionHeading from "./SectionHeading";
 import { useReveal } from "@/hooks/use-reveal";
 import mclaren from "@/assets/partners/mclaren.png";
 import lamborghini from "@/assets/partners/lamborghini.png";
+import ferrari from "@/assets/partners/ferrari.png";
+import porsche from "@/assets/partners/porsche.png";
 import brabus from "@/assets/partners/brabus.png";
 import yasMarina from "@/assets/partners/yas-marina.png";
 import alForsan from "@/assets/partners/al-forsan.png";
@@ -14,24 +16,52 @@ import adSports from "@/assets/partners/ad-sports.png";
 // Sizes and opacity are normalized by optical mass, not by height:
 // bold wide marks (Brabus, 24H) get a lower cap, thin or stacked marks
 // (A2RL, Lamborghini) a higher one — so every logo reads at the same scale.
+// Row 1: McLaren · Lamborghini · Ferrari · Brabus
+// Row 2: Porsche · A2RL · Al Forsan · 24H
+// Row 3 (centered): Yas Marina · Liwa
 const partners = [
-  { src: mclaren, name: "McLaren Abu Dhabi", img: "max-h-11 md:max-h-14 opacity-55" },
-  { src: lamborghini, name: "Lamborghini Abu Dhabi & Dubai", img: "max-h-16 md:max-h-20 opacity-55" },
-  { src: yasMarina, name: "Yas Marina Circuit", img: "max-h-11 md:max-h-14 opacity-55" },
-  { src: brabus, name: "Brabus Middle East", img: "max-h-9 md:max-h-11 opacity-50" },
-  { src: a2rl, name: "Abu Dhabi Autonomous Racing League", img: "max-h-12 md:max-h-[60px] opacity-60" },
-  { src: liwa, name: "Liwa International Festival", img: "max-h-11 md:max-h-14 opacity-55" },
-  { src: alForsan, name: "Al Forsan", img: "max-h-11 md:max-h-14 opacity-55" },
-  { src: h24, name: "24H Series", img: "max-h-8 md:max-h-10 opacity-50" },
+  { src: mclaren, name: "McLaren Abu Dhabi", img: "max-h-11 md:max-h-14 opacity-55", href: "https://cars.mclaren.com/gl_en/retailers/abu-dhabi"  },
+  { src: lamborghini, name: "Lamborghini Abu Dhabi & Dubai", img: "max-h-16 md:max-h-20 opacity-55", href: "https://www.lamborghini-abudhabi.com" },
+  { src: ferrari, name: "Ferrari Abu Dhabi", img: "max-h-[72px] md:max-h-24 opacity-55", href: "https://www.ferrari.com/en-AE" },
+  { src: brabus, name: "Brabus Middle East", img: "max-h-9 md:max-h-11 opacity-50", href: "https://www.brabus.com/en-fr/cars/supercars.html" },
+  { src: porsche, name: "Porsche Abu Dhabi", img: "max-h-[72px] md:max-h-24 opacity-55", href: "https://www.porsche.com/middle-east/_abudhabi_/" },
+  { src: a2rl, name: "Abu Dhabi Autonomous Racing League", img: "max-h-12 md:max-h-[60px] opacity-60", href: "https://a2rl.io/" },
+  { src: alForsan, name: "Al Forsan", img: "max-h-11 md:max-h-14 opacity-55", href: "https://www.alforsan.com/" },
+  { src: h24, name: "24H Series", img: "max-h-8 md:max-h-10 opacity-50", href: "https://www.24hseries.com/" },
+  { src: yasMarina, name: "Yas Marina Circuit", img: "max-h-11 md:max-h-14 opacity-55", href: "https://www.yasmarina.ae/" },
+  { src: liwa, name: "Liwa International Festival", img: "max-h-11 md:max-h-14 opacity-55", href: "https://liwainternationalfestival.ae" },
 ];
 
 const press = [
-  { src: gulfNews, name: "Gulf News", img: "max-h-10 md:max-h-12" },
-  { src: adSports, name: "Abu Dhabi Sports TV", img: "max-h-9 md:max-h-10" },
+  { src: gulfNews, name: "Gulf News", img: "max-h-10 md:max-h-12", href: "https://gulfnews.com/" },
+  { src: adSports, name: "Abu Dhabi Sports TV", img: "max-h-9 md:max-h-10", href: "https://www.admn.ae/" },
 ];
 
-const crossesY = ["top-0", "top-1/2", "top-full"];
+const crossesY = ["top-0", "top-1/3", "top-2/3", "top-full"];
 const crossesX = ["left-1/4", "left-1/2", "left-3/4"];
+
+const PartnerCell = ({ src, name, img, href }: { src: string; name: string; img: string; href?: string }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="relative aspect-[3/2] flex items-center justify-center bg-background hover:bg-card transition-colors duration-700 group p-6 cursor-pointer"
+  >
+    <img
+      src={src}
+      alt={name}
+      loading="lazy"
+      className={`${img} max-w-[78%] w-auto object-contain group-hover:opacity-95 transition-opacity duration-700`}
+    />
+    <span className="pointer-events-none absolute inset-x-0 bottom-4 px-3 text-center text-[10px] tracking-luxury uppercase text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+      {name}
+    </span>
+  </a>
+);
+
+// On desktop (4 cols) the last row holds only 2 marks — flank them with empty
+// background cells so they sit centered and the grid stays a clean rectangle.
+const Filler = () => <div aria-hidden className="hidden md:block bg-background" />;
 
 const Partners = () => {
   const ref = useReveal<HTMLDivElement>();
@@ -52,22 +82,14 @@ const Partners = () => {
 
         <div className="mt-20 relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border/60">
-            {partners.map((p) => (
-              <div
-                key={p.name}
-                className="relative aspect-[3/2] flex items-center justify-center bg-background hover:bg-card transition-colors duration-700 group p-6"
-              >
-                <img
-                  src={p.src}
-                  alt={p.name}
-                  loading="lazy"
-                  className={`${p.img} max-w-[78%] w-auto object-contain group-hover:opacity-95 transition-opacity duration-700`}
-                />
-                <span className="pointer-events-none absolute inset-x-0 bottom-4 px-3 text-center text-[10px] tracking-luxury uppercase text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  {p.name}
-                </span>
-              </div>
+            {partners.slice(0, 8).map((p) => (
+              <PartnerCell key={p.name} {...p} />
             ))}
+            <Filler />
+            {partners.slice(8).map((p) => (
+              <PartnerCell key={p.name} {...p} />
+            ))}
+            <Filler />
           </div>
 
           {/* gold crosses on the inner grid intersections */}
@@ -90,13 +112,14 @@ const Partners = () => {
         <span className="text-[11px] tracking-luxury uppercase text-muted-foreground">As Featured In</span>
         <div className="flex items-center justify-center gap-12 md:gap-20">
           {press.map((p) => (
-            <img
-              key={p.name}
-              src={p.src}
-              alt={p.name}
-              loading="lazy"
-              className={`${p.img} w-auto object-contain opacity-50 hover:opacity-90 transition-opacity duration-700`}
-            />
+            <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer">
+              <img
+                src={p.src}
+                alt={p.name}
+                loading="lazy"
+                className={`${p.img} w-auto object-contain opacity-50 hover:opacity-90 transition-opacity duration-700`}
+              />
+            </a>
           ))}
         </div>
       </div>

@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/hero-grid.jpg";
 import { ChevronDown } from "lucide-react";
 
 const Hero = () => (
@@ -7,7 +7,7 @@ const Hero = () => (
     <div className="absolute inset-0">
       <img
         src={heroImg}
-        alt="Supercars at night in Abu Dhabi"
+        alt="Supercars lined up on the grid at golden hour in Abu Dhabi"
         width={1920}
         height={1080}
         className="w-full h-full object-cover animate-ken-burns"
@@ -30,7 +30,7 @@ const Hero = () => (
     </div>
 
     {/* Content */}
-    <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+    <div className="relative z-10 h-full flex flex-col items-center justify-start pt-[12vh] md:pt-[13vh] pb-24 md:pb-28 text-center px-6">
       <div className="reveal in-view">
         <div className="flex items-center justify-center gap-4 mb-8">
           <span className="h-px w-12 bg-primary" />
@@ -45,16 +45,16 @@ const Hero = () => (
         <span className="italic font-light text-gold">Majlis Society</span>
       </h1>
 
-      <p className="mt-8 font-serif italic text-2xl md:text-3xl text-primary/90 reveal in-view reveal-delay-2">
+      <p className="mt-auto font-serif italic text-2xl md:text-3xl text-primary/90 reveal in-view reveal-delay-2">
         A Society, Not a Scene.
       </p>
 
-      <p className="mt-6 max-w-xl text-sm md:text-base text-muted-foreground leading-relaxed reveal in-view reveal-delay-3">
+      <p className="mt-4 max-w-xl text-sm md:text-base text-muted-foreground leading-relaxed reveal in-view reveal-delay-3">
         A private, invite-only community of supercar owners, collectors
         and decision-makers in the capital.
       </p>
 
-      <div className="mt-12 flex flex-col sm:flex-row gap-4 reveal in-view reveal-delay-4">
+      <div className="mt-8 flex flex-col sm:flex-row gap-4 reveal in-view reveal-delay-4">
         <a
           href="#membership"
           className="group inline-flex items-center justify-center gap-3 bg-gold text-primary-foreground px-8 py-4 text-xs tracking-luxury uppercase shadow-gold hover:shadow-none transition-all duration-500"

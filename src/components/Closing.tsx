@@ -1,5 +1,5 @@
 import { useReveal } from "@/hooks/use-reveal";
-import convoyImg from "@/assets/convoy.jpg";
+import cultureImg from "@/assets/culture-collage-wide.jpg";
 import logo from "@/assets/logo.jpg";
 
 const Closing = () => {
@@ -7,7 +7,7 @@ const Closing = () => {
   return (
     <section className="relative h-screen min-h-[640px] w-full overflow-hidden grain">
       <img
-        src={convoyImg}
+        src={cultureImg}
         alt="Supercar convoy in the desert"
         loading="lazy"
         width={1920}
