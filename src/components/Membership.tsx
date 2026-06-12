@@ -1,4 +1,5 @@
 import SectionHeading from "./SectionHeading";
+import aliPhilippLogo from "@/assets/ali_philipp_logo.jpeg";
 import { useReveal } from "@/hooks/use-reveal";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
@@ -32,7 +33,17 @@ const Membership = () => {
   return (
     <section id="membership" className="relative py-32 md:py-40 px-6 md:px-10 bg-card border-y border-border/50 overflow-hidden">
       <div className="absolute inset-0 bg-radial-gold opacity-40 pointer-events-none" />
-      <div ref={ref} className="reveal relative max-w-[1100px] mx-auto grid lg:grid-cols-2 gap-16 items-start">
+      <div ref={ref} className="reveal relative max-w-[1280px] mx-auto grid gap-12 lg:grid-cols-[minmax(340px,0.9fr)_1fr_1.05fr]">
+        <div className="hidden lg:block relative group">
+          <div className="absolute -inset-px bg-gradient-to-b from-gold/40 to-transparent pointer-events-none z-10" />
+          <img
+            src={aliPhilippLogo}
+            alt="ADM Society — members at an exclusive automotive gathering"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover border border-border grayscale-[0.15] transition-all duration-700 group-hover:grayscale-0"
+          />
+        </div>
+
         <div>
           <SectionHeading
             number="N° 07"

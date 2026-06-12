@@ -19,7 +19,7 @@ const Hero = () => (
 
     {/* Side ornaments */}
     <div className="absolute left-6 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-6 text-[10px] tracking-luxury text-muted-foreground/70 [writing-mode:vertical-rl] rotate-180">
-      <span>EST. MMXXIV</span>
+      <span>EST. MMXXVI</span>
       <span className="h-20 w-px bg-primary/40" />
       <span>MEMBERS ONLY</span>
     </div>
