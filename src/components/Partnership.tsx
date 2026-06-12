@@ -3,7 +3,7 @@ import { useReveal } from "@/hooks/use-reveal";
 
 const benefits = [
   { t: "Direct Audience", d: "Sit in the room with collectors and decision-makers — no media buy required." },
-  { t: "Cinematic Content", d: "Bespoke productions placed inside our 2M+ monthly reach." },
+  { t: "Cinematic Content", d: "Bespoke productions delivered to an audience of 2M+ monthly views." },
   { t: "Co-hosted Activations", d: "Yas Marina, hospitality, and lifestyle integrations under your brand." },
   { t: "Exclusivity", d: "One partner per category. Protected positioning, by design." },
 ];

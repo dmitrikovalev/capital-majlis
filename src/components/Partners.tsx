@@ -102,7 +102,7 @@ const Partners = () => {
       </div>
 
       <p className="mt-20 text-center max-w-xl mx-auto text-sm text-muted-foreground italic">
-        Premium activations with houses that share the same standard. Selective by design.
+        Premium activations with houses that share the same standard. Selective, always.
       </p>
     </section>
   );

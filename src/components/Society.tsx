@@ -40,7 +40,7 @@ const Society = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <p className="font-serif italic text-xl text-primary/90">
-                "You don't reach this audience. You sit alongside them."
+                "The most important room in the capital has no sign on the door."
               </p>
             </div>
           </div>

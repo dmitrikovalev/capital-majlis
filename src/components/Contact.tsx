@@ -81,7 +81,7 @@ const Contact = () => {
           </div>
 
           <p className="mt-10 text-[11px] tracking-luxury uppercase text-muted-foreground">
-            By referral preferred
+            Referrals preferred
           </p>
         </div>
       </div>

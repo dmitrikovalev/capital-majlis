@@ -49,7 +49,7 @@ const Membership = () => {
             Submit your details below. If there is alignment, you will be contacted privately for an introduction.
           </p>
           <div className="mt-10 space-y-4 text-sm text-muted-foreground">
-            {["Personally vetted", "Capital-based residency preferred", "Discretion guaranteed"].map((t) => (
+            {["Personally vetted", "Residence in the capital preferred", "Discretion guaranteed"].map((t) => (
               <div key={t} className="flex items-center gap-3">
                 <span className="w-1.5 h-1.5 bg-primary rotate-45" />
                 <span>{t}</span>
@@ -66,7 +66,7 @@ const Membership = () => {
             <div className="py-12 text-center space-y-4">
               <div className="font-serif text-3xl text-gold">Received.</div>
               <p className="text-sm text-muted-foreground max-w-sm mx-auto">
-                Your submission is under review. If aligned, a member of the society will contact you privately.
+                Your submission is under review. If there is alignment, a member of the society will contact you privately.
               </p>
             </div>
           ) : (
@@ -87,7 +87,7 @@ const Membership = () => {
                 {status === "loading" ? "Sending…" : "Submit for Consideration"}
               </button>
               <p className="text-[11px] tracking-wider-2 uppercase text-muted-foreground text-center">
-                By referral preferred
+                Referrals preferred
               </p>
             </>
           )}

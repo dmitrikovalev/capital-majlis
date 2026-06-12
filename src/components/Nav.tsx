@@ -28,10 +28,10 @@ const Nav = () => {
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-3 group" aria-label="ADM Majlis Society">
+        <a href="#top" className="flex items-center gap-3 group" aria-label="Abu Dhabi Majlis Society">
           <img
             src={logo}
-            alt="ADM Majlis Society"
+            alt="Abu Dhabi Majlis Society"
             width={160}
             height={48}
             className="h-9 md:h-10 w-auto object-contain"

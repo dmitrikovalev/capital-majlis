@@ -22,7 +22,7 @@ const Closing = () => {
         <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] max-w-5xl text-foreground">
           Where Abu Dhabi's
           <br />
-          <span className="italic text-gold">car culture</span> actually lives.
+          <span className="italic text-gold">car culture</span> truly lives.
         </h2>
 
         <div className="mt-14 flex flex-col sm:flex-row gap-4">
@@ -48,7 +48,7 @@ const Footer = () => (
   <footer className="bg-background border-t border-border/50 px-6 md:px-10 py-14">
     <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div className="flex items-center gap-3">
-        <img src={logo} alt="ADM Majlis Society" width={180} height={54} className="h-12 w-auto object-contain" />
+        <img src={logo} alt="Abu Dhabi Majlis Society" width={180} height={54} className="h-12 w-auto object-contain" />
       </div>
       <div className="text-[11px] tracking-wider-2 uppercase text-muted-foreground">
         © {new Date().getFullYear()} · All Rights Reserved · By Invitation

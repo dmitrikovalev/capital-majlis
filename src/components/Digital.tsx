@@ -10,13 +10,13 @@ const videos = [
   { id: "Ixu_jyDWNSg", title: "ADMSOC Porsche" },
   { id: "eqLWie7qrZU", title: "ADMSOC Ferrari" },
   { id: "XUlCYPA5gz8", title: "ADMSOC Aston Martin" },
-  { id: "9MNjYVKjsxs", title: "ADMSOC Mersedes" },
+  { id: "9MNjYVKjsxs", title: "ADMSOC Mercedes" },
 ];
 
 const metrics = [
   { icon: Eye, value: "2M+", label: "Monthly Views" },
   { icon: Heart, value: "8.4%", label: "Avg. Engagement" },
-  { icon: Film, value: "120+", label: "Productions / Yr" },
+  { icon: Film, value: "120+", label: "Productions / Year" },
 ];
 
 type Video = (typeof videos)[number];
@@ -42,7 +42,7 @@ const Digital = () => {
           />
           <p className="mt-8 text-base text-muted-foreground max-w-lg leading-relaxed">
             Cinematic content from inside the society — drives, tracks, gatherings.
-            A media presence that carries the room far beyond it.
+            A media presence that carries the room far beyond its walls.
           </p>
 
           <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">

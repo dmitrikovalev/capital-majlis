@@ -21,13 +21,13 @@ const items = [
   {
     n: "III",
     title: "Convoys & Drives",
-    desc: "Liwa. Jebel Jais. Hatta. The roads that earn your machine.",
+    desc: "Liwa. Jebel Jais. Hatta. The roads your machine deserves.",
     img: convoyImg,
   },
   {
     n: "IV",
     title: "Lifestyle Gatherings",
-    desc: "Iftar, Suhoor, padel and café evenings — the society beyond the cars.",
+    desc: "Iftar, suhoor, padel and café evenings — the society beyond the cars.",
     img: majlisImg,
   },
 ];
@@ -61,7 +61,7 @@ const Experiences = () => {
 
         <div className="mt-20 text-center">
           <span className="font-serif italic text-2xl md:text-3xl text-primary/80">
-            Flagship Events — once a year, never repeated.
+            One flagship event a year — never the same twice.
           </span>
         </div>
       </div>
