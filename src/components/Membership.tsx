@@ -15,6 +15,13 @@ const Membership = () => {
     e.preventDefault();
     setStatus("loading");
     const fd = new FormData(e.currentTarget);
+
+    // Honeypot: bots fill every field, humans never see this one.
+    if (fd.get("website")) {
+      setStatus("success");
+      return;
+    }
+
     const { error } = await supabase.from("membership_requests").insert({
       name: fd.get("name") as string,
       email: fd.get("email") as string,
@@ -87,6 +94,29 @@ const Membership = () => {
               <Field label="Phone (incl. country code)" name="phone" />
               <Field label="Vehicle / Collection" name="cars" />
               <Field label="Referred by (optional)" name="ref" />
+              {/* Honeypot — hidden from users, traps bots that fill all fields */}
+              <div aria-hidden="true" style={{ display: "none" }}>
+                <label htmlFor="website">Website</label>
+                <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
+              {/* PDPL consent — required legal basis for processing the submitted data */}
+              <label htmlFor="consent" className="group/consent flex items-start gap-4 cursor-pointer pt-2">
+                <input id="consent" name="consent" type="checkbox" required className="peer sr-only" />
+                <span className="mt-[3px] w-3.5 h-3.5 shrink-0 rotate-45 border border-border peer-checked:border-primary peer-checked:bg-primary peer-focus-visible:ring-1 peer-focus-visible:ring-primary transition-all duration-500" />
+                <span className="text-[11px] leading-relaxed text-muted-foreground">
+                  I consent to the processing of my personal data for the purpose of considering this
+                  enquiry, as described in the{" "}
+                  <a
+                    href="/privacy"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary hover:opacity-80 transition-opacity underline underline-offset-4 decoration-primary/40"
+                  >
+                    Privacy Policy
+                  </a>
+                  .
+                </span>
+              </label>
               {status === "error" && (
                 <p className="text-xs text-destructive">{errorMsg}</p>
               )}

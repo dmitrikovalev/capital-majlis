@@ -1,6 +1,7 @@
 import "@supabase/functions-js/edge-runtime.d.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const WEBHOOK_SECRET = Deno.env.get("WEBHOOK_SECRET");
 const NOTIFY_TO = "admin@admsoc.com";
 
 interface MembershipRecord {
@@ -13,11 +14,42 @@ interface MembershipRecord {
   referred_by: string | null;
 }
 
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function timingSafeEqual(a: string, b: string): boolean {
+  const ea = new TextEncoder().encode(a);
+  const eb = new TextEncoder().encode(b);
+  if (ea.length !== eb.length) return false;
+  let diff = 0;
+  for (let i = 0; i < ea.length; i++) diff |= ea[i] ^ eb[i];
+  return diff === 0;
+}
+
 Deno.serve(async (req) => {
   try {
     if (!RESEND_API_KEY) {
       console.error("RESEND_API_KEY secret is not set");
       return new Response("misconfigured: missing RESEND_API_KEY", { status: 500 });
+    }
+
+    // Verify the shared secret sent by Supabase Database Webhook.
+    // Set WEBHOOK_SECRET in Supabase project secrets and mirror the same value
+    // in the webhook's "HTTP Headers" as x-webhook-secret.
+    if (!WEBHOOK_SECRET) {
+      console.error("WEBHOOK_SECRET secret is not set");
+      return new Response("misconfigured: missing WEBHOOK_SECRET", { status: 500 });
+    }
+    const incoming = req.headers.get("x-webhook-secret") ?? "";
+    if (!timingSafeEqual(incoming, WEBHOOK_SECRET)) {
+      console.error("Unauthorized webhook call — bad or missing x-webhook-secret");
+      return new Response("unauthorized", { status: 401 });
     }
 
     const payload = await req.json().catch(() => null);
@@ -32,12 +64,12 @@ Deno.serve(async (req) => {
     const html = `
       <h2>New Membership Request</h2>
       <table cellpadding="6" style="border-collapse:collapse">
-        <tr><td><b>Name</b></td><td>${record.name}</td></tr>
-        <tr><td><b>Email</b></td><td>${record.email}</td></tr>
-        <tr><td><b>Phone</b></td><td>${record.phone}</td></tr>
-        <tr><td><b>Collection</b></td><td>${record.cars}</td></tr>
-        <tr><td><b>Referred by</b></td><td>${record.referred_by ?? "—"}</td></tr>
-        <tr><td><b>Submitted</b></td><td>${record.created_at}</td></tr>
+        <tr><td><b>Name</b></td><td>${escapeHtml(record.name)}</td></tr>
+        <tr><td><b>Email</b></td><td>${escapeHtml(record.email)}</td></tr>
+        <tr><td><b>Phone</b></td><td>${escapeHtml(record.phone)}</td></tr>
+        <tr><td><b>Collection</b></td><td>${escapeHtml(record.cars)}</td></tr>
+        <tr><td><b>Referred by</b></td><td>${record.referred_by ? escapeHtml(record.referred_by) : "—"}</td></tr>
+        <tr><td><b>Submitted</b></td><td>${escapeHtml(record.created_at)}</td></tr>
       </table>
     `;
 
@@ -50,7 +82,7 @@ Deno.serve(async (req) => {
       body: JSON.stringify({
         from: "ADMSOC <onboarding@resend.dev>",
         to: [NOTIFY_TO],
-        subject: `New membership request — ${record.name}`,
+        subject: `New membership request — ${escapeHtml(record.name)}`,
         html,
       }),
     });
