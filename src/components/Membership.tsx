@@ -1,15 +1,24 @@
 import SectionHeading from "./SectionHeading";
 import aliPhilippLogo from "@/assets/ali_philipp_logo.jpeg";
 import { useReveal } from "@/hooks/use-reveal";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 const Membership = () => {
   const ref = useReveal<HTMLDivElement>();
+  const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+
+  // When the form collapses into the short success message, the layout shifts
+  // and the confirmation can end up scrolled off-screen on mobile — bring it back.
+  useEffect(() => {
+    if (status === "success") {
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -77,6 +86,7 @@ const Membership = () => {
         </div>
 
         <form
+          ref={formRef}
           onSubmit={handleSubmit}
           className="space-y-6 bg-background/60 border border-border p-8 md:p-10"
         >
