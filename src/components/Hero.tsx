@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero-grid.jpg";
+import heroImg from "@/assets/hero-grid-v2.jpg";
 import { ChevronDown } from "lucide-react";
 
 const Hero = () => (
@@ -14,7 +14,7 @@ const Hero = () => (
       />
     </div>
     {/* Gradient overlays */}
-    <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
+    <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/1.2" />
     <div className="absolute inset-0" style={{ background: "var(--gradient-vignette)" }} />
 
     {/* Side ornaments */}
@@ -45,7 +45,7 @@ const Hero = () => (
         <span className="italic font-light text-gold">Majlis Society</span>
       </h1>
 
-      <p className="mt-auto font-serif italic text-2xl md:text-3xl text-primary/90 reveal in-view reveal-delay-2">
+      <p className="mt-8 font-serif italic text-2xl md:text-3xl text-primary/90 reveal in-view reveal-delay-2">
         A Society, Not a Scene.
       </p>
 
@@ -54,7 +54,7 @@ const Hero = () => (
         and decision-makers in the capital.
       </p>
 
-      <div className="mt-8 flex flex-col sm:flex-row gap-4 reveal in-view reveal-delay-4">
+      <div className="mt-auto flex flex-col sm:flex-row gap-4 reveal in-view reveal-delay-4">
         <a
           href="#membership"
           className="group inline-flex items-center justify-center gap-3 bg-gold text-primary-foreground px-8 py-4 text-xs tracking-luxury uppercase shadow-gold hover:shadow-none transition-all duration-500"

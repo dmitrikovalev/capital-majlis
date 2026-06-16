@@ -1,8 +1,15 @@
 import "@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "@supabase/supabase-js";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const WEBHOOK_SECRET = Deno.env.get("WEBHOOK_SECRET");
+// Injected automatically into every Edge Function by the Supabase runtime.
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 const NOTIFY_TO = "admin@admsoc.com";
+
+const DOC_BUCKET = "vehicle-registrations";
+const SIGNED_URL_TTL = 7 * 24 * 60 * 60; // 7 days, in seconds.
 
 interface MembershipRecord {
   id: string;
@@ -12,6 +19,26 @@ interface MembershipRecord {
   phone: string;
   cars: string;
   referred_by: string | null;
+  registration_doc_path: string | null;
+}
+
+// Mint a time-limited link to the (private) registration certificate. Returns
+// null on any failure so a missing/broken document never blocks the notification.
+async function signDocument(path: string | null): Promise<string | null> {
+  if (!path) return null;
+  if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
+    console.error("Cannot sign document: missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
+    return null;
+  }
+  const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
+  const { data, error } = await supabase.storage
+    .from(DOC_BUCKET)
+    .createSignedUrl(path, SIGNED_URL_TTL);
+  if (error) {
+    console.error("Failed to create signed URL:", error.message);
+    return null;
+  }
+  return data.signedUrl;
 }
 
 function escapeHtml(s: string): string {
@@ -61,6 +88,11 @@ Deno.serve(async (req) => {
 
     const record: MembershipRecord = payload.record;
 
+    const signedUrl = await signDocument(record.registration_doc_path);
+    const docRow = signedUrl
+      ? `<tr><td><b>Registration certificate</b></td><td><a href="${escapeHtml(signedUrl)}">View document</a> <i>(link expires in 7 days)</i></td></tr>`
+      : `<tr><td><b>Registration certificate</b></td><td>—</td></tr>`;
+
     const html = `
       <h2>New Membership Request</h2>
       <table cellpadding="6" style="border-collapse:collapse">
@@ -69,6 +101,7 @@ Deno.serve(async (req) => {
         <tr><td><b>Phone</b></td><td>${escapeHtml(record.phone)}</td></tr>
         <tr><td><b>Collection</b></td><td>${escapeHtml(record.cars)}</td></tr>
         <tr><td><b>Referred by</b></td><td>${record.referred_by ? escapeHtml(record.referred_by) : "—"}</td></tr>
+        ${docRow}
         <tr><td><b>Submitted</b></td><td>${escapeHtml(record.created_at)}</td></tr>
       </table>
     `;

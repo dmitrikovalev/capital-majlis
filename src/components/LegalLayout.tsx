@@ -2,7 +2,7 @@ import { ReactNode, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Footer } from "./Closing";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/adm-logo.png";
 
 export interface LegalSection {
   title: string;
@@ -32,9 +32,9 @@ const LegalLayout = ({ eyebrow, title, updated, intro, sections, documentTitle }
             <img
               src={logo}
               alt="Abu Dhabi Majlis Society"
-              width={160}
-              height={48}
-              className="h-9 md:h-10 w-auto object-contain"
+              width={90}
+              height={60}
+              className="h-20 md:h-24 w-auto object-contain"
             />
           </Link>
           <Link

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/adm-logo.png";
 
 const links = [
   { href: "#society", label: "Society" },
@@ -32,9 +32,9 @@ const Nav = () => {
           <img
             src={logo}
             alt="Abu Dhabi Majlis Society"
-            width={160}
-            height={48}
-            className="h-9 md:h-10 w-auto object-contain"
+            width={90}
+            height={60}
+            className="h-20 md:h-24 w-auto object-contain"
           />
         </a>
 

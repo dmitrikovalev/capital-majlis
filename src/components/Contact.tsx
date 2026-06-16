@@ -1,7 +1,7 @@
 import SectionHeading from "./SectionHeading";
 import { useReveal } from "@/hooks/use-reveal";
 import { MessageCircle, Phone } from "lucide-react";
-import principalsImg from "@/assets/principals.jpg";
+import principalsImg from "@/assets/principals-v2.jpg";
 
 const contacts = [
   { name: "Ali", phone: "+971 50 228 6616", wa: "971502286616" },

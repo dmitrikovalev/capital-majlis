@@ -49,6 +49,11 @@ const Privacy = () => (
                 the membership form.
               </Bullet>
               <Bullet>
+                <strong>Vehicle ownership certificate</strong> — an image of the vehicle registration
+                certificate you upload with your membership enquiry, which we retain to verify the ownership of
+                the vehicle or collection you submit.
+              </Bullet>
+              <Bullet>
                 <strong>Direct correspondence</strong> — information you share when contacting us by phone or
                 WhatsApp using the details published on this site.
               </Bullet>

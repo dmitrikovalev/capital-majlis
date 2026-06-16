@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useReveal } from "@/hooks/use-reveal";
 import cultureImg from "@/assets/culture-collage-wide.jpg";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/adm-logo.png";
 
 const Closing = () => {
   const ref = useReveal<HTMLDivElement>();
@@ -49,7 +49,7 @@ const Footer = () => (
   <footer className="bg-background border-t border-border/50 px-6 md:px-10 py-14">
     <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
       <div className="flex items-center gap-3">
-        <img src={logo} alt="Abu Dhabi Majlis Society" width={180} height={54} className="h-12 w-auto object-contain" />
+        <img src={logo} alt="Abu Dhabi Majlis Society" width={120} height={80} className="h-20 md:h-24 w-auto object-contain" />
       </div>
       <nav className="flex items-center gap-8">
         <Link
