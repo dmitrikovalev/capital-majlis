@@ -2,7 +2,7 @@ import SectionHeading from "./SectionHeading";
 import { useReveal } from "@/hooks/use-reveal";
 import carImg from "@/assets/car-detail.jpg";
 
-const brands = ["McLaren", "Ferrari", "Lamborghini", "Bugatti", "Pagani", "Koenigsegg", "Porsche", "Aston Martin", "Brabus"];
+const brands = ["McLaren", "Ferrari", "Lamborghini", "Bugatti", "Pagani", "Koenigsegg", "Porsche", "Aston Martin", "Brabus", "Audi"];
 
 const Cars = () => {
   const ref = useReveal<HTMLDivElement>();

@@ -92,14 +92,14 @@ const Membership = () => {
   return (
     <section id="membership" className="relative py-32 md:py-40 px-6 md:px-10 bg-card border-y border-border/50 overflow-hidden">
       <div className="absolute inset-0 bg-radial-gold opacity-40 pointer-events-none" />
-      <div ref={ref} className="reveal relative max-w-[1280px] mx-auto grid gap-12 lg:grid-cols-[minmax(340px,0.9fr)_1fr_1.05fr]">
-        <div className="hidden lg:block relative group">
+      <div ref={ref} className="reveal relative max-w-[1280px] mx-auto grid gap-12 lg:grid-cols-[minmax(480px,0.7fr)_1fr_1.05fr]">
+        <div className="hidden lg:block relative group lg:-ml-10 lg:w-[calc(100%+2.5rem)]">
           <div className="absolute -inset-px bg-gradient-to-b from-gold/40 to-transparent pointer-events-none z-10" />
           <img
             src={aliPhilippLogo}
             alt="ADM Society — members at an exclusive automotive gathering"
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover border border-border grayscale-[0.15] transition-all duration-700 group-hover:grayscale-0"
+            className="block h-full w-full object-cover object-center border border-border grayscale-[0.15] transition-all duration-700 group-hover:grayscale-0"
           />
         </div>
 
@@ -131,7 +131,7 @@ const Membership = () => {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="space-y-6 bg-background/60 border border-border p-8 md:p-10"
+          className="space-y-5 bg-background/60 border border-border p-8 md:p-9"
         >
           {status === "success" ? (
             <div className="py-12 text-center space-y-4">
@@ -224,7 +224,7 @@ const RegistrationUpload = ({
   return (
     <div className="group">
       <label className="block text-[10px] tracking-luxury uppercase text-muted-foreground mb-2">
-        Vehicle Ownership Certificate
+        Vehicle License Certificate
       </label>
 
       <input
@@ -268,11 +268,11 @@ const RegistrationUpload = ({
           </button>
         </div>
       ) : (
-        <div className="border border-dashed border-border bg-background/30 px-5 py-6 text-center transition-colors duration-500 group-hover:border-primary/50">
+        <div className="border border-dashed border-border bg-background/30 px-5 py-5 text-center transition-colors duration-500 group-hover:border-primary/50">
           <p className="text-xs text-muted-foreground">
             A clear photo or scan of the certificate
           </p>
-          <div className="mt-4 flex items-center justify-center gap-3">
+          <div className="mt-3 flex items-center justify-center gap-3">
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
@@ -289,9 +289,6 @@ const RegistrationUpload = ({
               Take Photo
             </button>
           </div>
-          <p className="mt-3 text-[10px] tracking-wider-2 uppercase text-muted-foreground/70">
-            JPG · PNG · HEIC — up to 10 MB
-          </p>
         </div>
       )}
 
@@ -310,7 +307,7 @@ const Field = ({ label, name, type = "text" }: { label: string; name: string; ty
       name={name}
       type={type}
       required={name !== "ref"}
-      className="w-full bg-transparent border-b border-border focus:border-primary py-3 text-foreground outline-none transition-colors duration-500"
+      className="w-full bg-transparent border-b border-border focus:border-primary py-2.5 text-foreground outline-none transition-colors duration-500"
     />
   </div>
 );

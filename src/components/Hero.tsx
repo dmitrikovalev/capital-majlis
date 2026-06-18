@@ -46,7 +46,7 @@ const Hero = () => (
       </h1>
 
       <p className="mt-8 font-serif italic text-2xl md:text-3xl text-primary/90 reveal in-view reveal-delay-2">
-        A Society, Not a Scene.
+      Where power meets prestige in the capital.
       </p>
 
       <p className="mt-4 max-w-xl text-sm md:text-base text-muted-foreground leading-relaxed reveal in-view reveal-delay-3">

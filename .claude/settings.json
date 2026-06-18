@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sips -g pixelWidth -g pixelHeight src/assets/ali_philipp_logo.jpeg)",
+      "Bash(ls node_modules/.bin/ | grep -iE 'playwright|puppet' ; which chromium chrome google-chrome 2>/dev/null; ls /Applications/ | grep -iE 'chrome|chromium' 2>/dev/null)",
+      "Read(//Applications/**)",
+      "Bash(node /tmp/shot.js)",
+      "Bash(node /tmp/measure.js)"
+    ]
+  }
+}
