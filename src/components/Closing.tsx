@@ -20,11 +20,13 @@ const Closing = () => {
 
       <div ref={ref} className="reveal relative h-full flex flex-col items-center justify-center text-center px-6">
         <span className="text-[11px] tracking-luxury text-primary mb-8">N° 10 · FINAL</span>
-        <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] max-w-5xl text-foreground">
+        <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] max-w-5xl text-platinum">
           Where Abu Dhabi's
           <br />
-          <span className="italic text-gold">car culture</span> truly lives.
+          <span className="italic">car culture</span> truly lives.
         </h2>
+
+        <span className="mt-7 h-px w-16 bg-primary" />
 
         <div className="mt-14 flex flex-col sm:flex-row gap-4">
           <a

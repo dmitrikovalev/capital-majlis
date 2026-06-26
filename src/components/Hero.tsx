@@ -39,14 +39,16 @@ const Hero = () => (
         </div>
       </div>
 
-      <h1 className="font-serif leading-[0.92] max-w-6xl reveal in-view reveal-delay-1">
-        <span className="block text-3xl sm:text-5xl md:text-6xl font-light tracking-wider-2 text-foreground/60">
+      <h1 className="font-display uppercase font-bold leading-[0.9] tracking-tight max-w-6xl reveal in-view reveal-delay-1">
+        <span className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-foreground/80">
           Abu Dhabi
         </span>
-        <span className="block mt-2 md:mt-3 text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] italic font-light text-platinum">
+        <span className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-platinum">
           Majlis Society
         </span>
       </h1>
+
+      <span className="mt-6 md:mt-7 h-px w-16 bg-primary reveal in-view reveal-delay-1" />
 
       <p className="mt-8 font-serif italic text-2xl md:text-3xl text-foreground/80 reveal in-view reveal-delay-2">
       Where power meets prestige in the capital.

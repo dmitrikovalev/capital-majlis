@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Saira+Condensed:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -95,6 +95,7 @@
 @layer utilities {
   .font-serif { font-family: 'Cormorant Garamond', serif; }
   .font-sans { font-family: 'Inter', system-ui, sans-serif; }
+  .font-display { font-family: 'Saira Condensed', 'Inter', sans-serif; }
 
   .text-gold {
     background: var(--gradient-gold);
@@ -103,13 +104,22 @@
     color: transparent;
   }
 
-  /* Platinum — dimensional white/silver sheen for display headings (gold-free premium) */
+  /* Platinum — reflective chrome/silver sheen for display headings (gold-free premium).
+     Mid specular band + darker shoulders read as polished metal. */
   .text-platinum {
-    background: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 90%) 42%, hsl(0 0% 68%) 100%);
+    background: linear-gradient(
+      180deg,
+      hsl(0 0% 86%) 0%,
+      hsl(0 0% 100%) 18%,
+      hsl(0 0% 62%) 46%,
+      hsl(0 0% 100%) 56%,
+      hsl(0 0% 74%) 74%,
+      hsl(0 0% 48%) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(0 1px 1px hsl(0 0% 0% / 0.45));
+    filter: drop-shadow(0 1px 1px hsl(0 0% 0% / 0.5));
   }
 
   .bg-gold { background: var(--gradient-gold); }
