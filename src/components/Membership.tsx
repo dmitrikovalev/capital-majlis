@@ -144,7 +144,7 @@ const Membership = () => {
             <>
               <Field label="Full Name" name="name" />
               <Field label="Email" name="email" type="email" />
-              <Field label="Phone (incl. country code)" name="phone" />
+              <Field label="Phone" name="phone" />
               <Field label="Vehicle / Collection" name="cars" />
               <RegistrationUpload doc={doc} error={docError} onSelect={handleDoc} />
               <Field label="Referred by (optional)" name="ref" />

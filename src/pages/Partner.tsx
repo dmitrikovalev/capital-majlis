@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, FileText, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, FileText } from "lucide-react";
 import { Footer } from "@/components/Closing";
 import { supabase } from "@/lib/supabase";
 import logo from "@/assets/adm-logo.png";
@@ -89,6 +89,7 @@ const Partner = () => {
     const { error } = await supabase.from("partnership_inquiries").insert({
       name: fd.get("name") as string,
       email: fd.get("email") as string,
+      phone: fd.get("phone") as string,
       company: (fd.get("company") as string) || null,
       subject: fd.get("subject") as string,
       message: fd.get("message") as string,
@@ -185,6 +186,7 @@ const Partner = () => {
               <>
                 <Field label="Full Name" name="name" />
                 <Field label="Work Email" name="email" type="email" />
+                <Field label="Phone" name="phone" type="tel" />
                 <Field label="Company / Brand (optional)" name="company" required={false} />
                 <Field label="Subject" name="subject" />
                 <div className="group">
@@ -327,16 +329,16 @@ const AttachmentUpload = ({
           </button>
         </div>
       ) : (
-        <div className="border border-dashed border-border bg-background/30 px-5 py-6 text-center transition-colors duration-500 group-hover:border-primary/50">
+        <button
+          type="button"
+          onClick={() => inputRef.current?.click()}
+          className="flex w-full items-center justify-between gap-4 border border-dashed border-border bg-background/30 px-4 py-3 text-left transition-colors duration-500 hover:border-primary/50 group-hover:border-primary/50"
+        >
 
-          <button
-            type="button"
-            onClick={() => inputRef.current?.click()}
-            className="mt-3 border border-border px-5 py-2.5 text-[10px] tracking-luxury uppercase text-foreground hover:border-primary hover:text-primary transition-colors duration-500"
-          >
+          <span className="shrink-0 text-[10px] tracking-luxury uppercase text-foreground">
             Attach File
-          </button>
-        </div>
+          </span>
+        </button>
       )}
 
       {error && <p className="mt-2 text-xs text-destructive">{error}</p>}
