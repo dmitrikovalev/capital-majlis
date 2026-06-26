@@ -11,8 +11,11 @@ const Hero = () => (
         width={1920}
         height={1080}
         className="w-full h-full object-cover animate-ken-burns"
+        style={{ filter: "saturate(0.72) brightness(0.97)" }}
       />
     </div>
+    {/* Cool neutralizing layer to cut the warm/golden haze */}
+    <div className="absolute inset-0 bg-[hsl(210_35%_45%)] mix-blend-color opacity-[0.15] pointer-events-none" />
     {/* Gradient overlays */}
     <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/1.2" />
     <div className="absolute inset-0" style={{ background: "var(--gradient-vignette)" }} />

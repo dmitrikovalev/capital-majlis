@@ -36,7 +36,10 @@ const Society = () => {
               width={1920}
               height={1440}
               className="w-full h-auto block"
+              style={{ filter: "saturate(0.85)" }}
             />
+            {/* Light cool layer to neutralize the golden cast — gentle to keep skin tones natural */}
+            <div className="absolute inset-0 bg-[hsl(210_35%_45%)] mix-blend-color opacity-[0.08] pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <p className="font-serif italic text-xl text-primary/90">

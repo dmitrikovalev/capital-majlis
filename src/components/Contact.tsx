@@ -23,7 +23,10 @@ const Contact = () => {
             width={1200}
             height={1600}
             className="w-full h-auto block"
+            style={{ filter: "saturate(0.85)" }}
           />
+          {/* Light cool layer to neutralize the golden cast — gentle to keep skin tones natural */}
+          <div className="absolute inset-0 bg-[hsl(210_35%_45%)] mix-blend-color opacity-[0.08] pointer-events-none" />
           {/* subtle scrim over the empty sky for the caption — never reaches the people */}
           <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background/70 to-transparent" />
           <div className="absolute top-6 left-6">
