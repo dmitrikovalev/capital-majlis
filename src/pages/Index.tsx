@@ -14,7 +14,7 @@ import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "ADMSOC — Abu Dhabi Majlis Society · A Society, Not a Scene";
+    document.title = "ADMSOC, Abu Dhabi Majlis Society · A Society, Not a Scene";
     const desc = "A private, invite-only society of supercar owners, collectors and decision-makers in Abu Dhabi.";
     let m = document.querySelector('meta[name="description"]');
     if (!m) {

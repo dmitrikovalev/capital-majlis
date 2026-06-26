@@ -23,7 +23,7 @@ const Society = () => {
               <>
                 Not a public car meet.
                 <br />
-                A <span className="italic text-gold">curated society</span> built on one standard —
+                A <span className="italic text-gold">curated society</span> built on one standard,
                 <span className="text-muted-foreground"> premium or nothing.</span>
               </>
             }

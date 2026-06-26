@@ -2,7 +2,7 @@ import LegalLayout, { Bullet } from "@/components/LegalLayout";
 
 const Privacy = () => (
   <LegalLayout
-    documentTitle="Privacy Policy — ADMSOC · Abu Dhabi Majlis Society"
+    documentTitle="Privacy Policy, ADMSOC · Abu Dhabi Majlis Society"
     eyebrow="Privacy Policy"
     title={
       <>
@@ -44,17 +44,17 @@ const Privacy = () => (
             <p>We collect personal data only when you choose to provide it:</p>
             <ul>
               <Bullet>
-                <strong>Membership enquiries</strong> — full name, email address, phone number, details of your
+                <strong>Membership enquiries</strong>, full name, email address, phone number, details of your
                 vehicle or collection, and the name of the member who referred you (if any), submitted through
                 the membership form.
               </Bullet>
               <Bullet>
-                <strong>Vehicle ownership certificate</strong> — an image of the vehicle registration
+                <strong>Vehicle ownership certificate</strong>, an image of the vehicle registration
                 certificate you upload with your membership enquiry, which we retain to verify the ownership of
                 the vehicle or collection you submit.
               </Bullet>
               <Bullet>
-                <strong>Direct correspondence</strong> — information you share when contacting us by phone or
+                <strong>Direct correspondence</strong>, information you share when contacting us by phone or
                 WhatsApp using the details published on this site.
               </Bullet>
             </ul>
@@ -90,7 +90,7 @@ const Privacy = () => (
           <>
             <p>
               <strong>This website sets no cookies of its own</strong> and runs no analytics or advertising
-              scripts. That is why you will not see a cookie banner here — there is nothing to consent to while
+              scripts. That is why you will not see a cookie banner here, there is nothing to consent to while
               you browse.
             </p>
             <p>

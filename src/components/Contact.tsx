@@ -40,7 +40,7 @@ const Contact = () => {
             title={<span className="italic text-gold">Direct Access.</span>}
           />
           <p className="mt-8 text-base text-muted-foreground max-w-lg leading-relaxed">
-            For membership inquiries, partnerships, or private introductions —
+            For membership inquiries, partnerships, or private introductions,
             reach out directly.
           </p>
 

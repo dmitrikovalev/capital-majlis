@@ -3,7 +3,7 @@ import LegalLayout, { Bullet } from "@/components/LegalLayout";
 
 const Terms = () => (
   <LegalLayout
-    documentTitle="Terms & Conditions — ADMSOC · Abu Dhabi Majlis Society"
+    documentTitle="Terms & Conditions, ADMSOC · Abu Dhabi Majlis Society"
     eyebrow="Terms & Conditions"
     title={
       <>
@@ -38,7 +38,7 @@ const Terms = () => (
         body: (
           <>
             <p>
-              Membership of the society is <strong>not applied for — it is considered</strong>. Accordingly:
+              Membership of the society is <strong>not applied for, it is considered</strong>. Accordingly:
             </p>
             <ul>
               <Bullet>
@@ -63,8 +63,8 @@ const Terms = () => (
         title: "Intellectual Property",
         body: (
           <p>
-            All content on this website — including text, photography, films, graphics, layout and the ADMSOC
-            name and marks — is the property of ADMSOC or its licensors and is protected by applicable
+            All content on this website, including text, photography, films, graphics, layout and the ADMSOC
+            name and marks, is the property of ADMSOC or its licensors and is protected by applicable
             intellectual property laws. You may not reproduce, distribute or otherwise use any content from this
             website without our prior written consent, except for personal, non-commercial viewing.
           </p>
@@ -74,8 +74,8 @@ const Terms = () => (
         title: "Third-Party Marks",
         body: (
           <p>
-            References to automotive marques and other brands on this website — including, without limitation,
-            Porsche, Ferrari, Lamborghini, Aston Martin, Mercedes-Benz and Brabus — together with their logos
+            References to automotive marques and other brands on this website, including, without limitation,
+            Porsche, Ferrari, Lamborghini, Aston Martin, Mercedes-Benz and Brabus, together with their logos
             and trade marks, are the property of their respective owners. They appear solely to describe the
             vehicles and interests of the society&rsquo;s members.{" "}
             <strong>

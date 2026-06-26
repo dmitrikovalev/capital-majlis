@@ -50,7 +50,7 @@ const Cars = () => {
           </div>
 
           <p className="mt-12 text-sm text-muted-foreground italic max-w-md leading-relaxed">
-            Hypercars, one-offs, and limited series — many of which never appear outside our own gatherings.
+            Hypercars, one-offs, and limited series, many of which never appear outside our own gatherings.
           </p>
         </div>
       </div>

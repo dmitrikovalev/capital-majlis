@@ -83,7 +83,7 @@ const Membership = () => {
     }
     if (file.size > MAX_FILE_BYTES) {
       setDoc(null);
-      setDocError("Image is too large — maximum size is 10 MB.");
+      setDocError("Image is too large, maximum size is 10 MB.");
       return;
     }
     setDoc(file);
@@ -97,7 +97,7 @@ const Membership = () => {
           <div className="absolute -inset-px bg-gradient-to-b from-gold/40 to-transparent pointer-events-none z-10" />
           <img
             src={aliPhilippLogo}
-            alt="ADM Society — members at an exclusive automotive gathering"
+            alt="ADM Society, members at an exclusive automotive gathering"
             loading="lazy"
             className="block h-full w-full object-cover object-center border border-border grayscale-[0.15] transition-all duration-700 group-hover:grayscale-0"
           />

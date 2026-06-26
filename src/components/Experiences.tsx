@@ -9,13 +9,13 @@ const items = [
   {
     n: "I",
     title: "Private Car Meets",
-    desc: "Quiet evenings in curated venues — by invitation, by name.",
+    desc: "Quiet evenings in curated venues, by invitation, by name.",
     img: carImg,
   },
   {
     n: "II",
     title: "Track Experiences",
-    desc: "Yas Marina sessions reserved for the society — pit lane access included.",
+    desc: "Yas Marina sessions reserved for the society, pit lane access included.",
     img: trackImg,
   },
   {
@@ -27,7 +27,7 @@ const items = [
   {
     n: "IV",
     title: "Lifestyle Gatherings",
-    desc: "Iftar, suhoor, padel and café evenings — the society beyond the cars.",
+    desc: "Iftar, suhoor, padel and café evenings, the society beyond the cars.",
     img: majlisImg,
   },
 ];
@@ -61,7 +61,7 @@ const Experiences = () => {
 
         <div className="mt-20 text-center">
           <span className="font-serif italic text-2xl md:text-3xl text-primary/80">
-            One flagship event a year — never the same twice.
+            One flagship event a year, never the same twice.
           </span>
         </div>
       </div>

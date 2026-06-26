@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SectionHeading from "./SectionHeading";
 import { useReveal } from "@/hooks/use-reveal";
+import { supabase } from "@/lib/supabase";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Instagram, Eye, Heart, Film, Play, X } from "lucide-react";
 
-const videos = [
+type Video = { id: string; title: string };
+
+// Rendered immediately and used as a fallback if the videos table can't be
+// reached, so the grid never flashes empty. The live list comes from Supabase.
+const fallbackVideos: Video[] = [
   { id: "rJg3GHjseHM", title: "ADMSOC Porsche" },
   { id: "oLFahxr_vwA", title: "ADMSOC Ferrari" },
   { id: "Ixu_jyDWNSg", title: "ADMSOC Porsche" },
@@ -19,11 +24,32 @@ const metrics = [
   { icon: Film, value: "120+", label: "Productions / Year" },
 ];
 
-type Video = (typeof videos)[number];
-
 const Digital = () => {
   const ref = useReveal<HTMLDivElement>();
   const [active, setActive] = useState<Video | null>(null);
+  const [videos, setVideos] = useState<Video[]>(fallbackVideos);
+
+  useEffect(() => {
+    let cancelled = false;
+    supabase
+      .from("videos")
+      .select("youtube_id, title")
+      .eq("published", true)
+      .order("sort_order", { ascending: true })
+      .order("created_at", { ascending: false })
+      .then(({ data, error }) => {
+        if (cancelled || error || !data?.length) return;
+        setVideos(
+          data.map((v: { youtube_id: string; title: string }) => ({
+            id: v.youtube_id,
+            title: v.title,
+          })),
+        );
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <section className="relative py-32 md:py-40 px-6 md:px-10 bg-card border-y border-border/50">
@@ -41,7 +67,7 @@ const Digital = () => {
             }
           />
           <p className="mt-8 text-base text-muted-foreground max-w-lg leading-relaxed">
-            Cinematic content from inside the society — drives, tracks, gatherings.
+            Cinematic content from inside the society, drives, tracks, gatherings.
             A media presence that carries the room far beyond its walls.
           </p>
 

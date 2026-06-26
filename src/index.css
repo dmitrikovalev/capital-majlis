@@ -74,6 +74,21 @@
   ::selection {
     @apply bg-primary/30 text-primary-foreground;
   }
+  /* Browser autofill forces a white background and dark text. Keep autofilled
+     fields on the dark theme: paint the field with the background colour via an
+     inset shadow and override the text fill colour. The long transition delay
+     prevents the autofill colour from flashing in before the shadow applies. */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: hsl(var(--foreground));
+    -webkit-box-shadow: 0 0 0 1000px hsl(var(--card)) inset;
+    box-shadow: 0 0 0 1000px hsl(var(--card)) inset;
+    caret-color: hsl(var(--foreground));
+    transition: background-color 600000s 0s, color 600000s 0s;
+  }
 }
 
 @layer utilities {

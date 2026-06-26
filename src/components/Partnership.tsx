@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import SectionHeading from "./SectionHeading";
 import { useReveal } from "@/hooks/use-reveal";
 
 const benefits = [
-  { t: "Direct Audience", d: "Sit in the room with collectors and decision-makers — no media buy required." },
+  { t: "Direct Audience", d: "Sit in the room with collectors and decision-makers, no media buy required." },
   { t: "Cinematic Content", d: "Bespoke productions delivered to an audience of 2M+ monthly views." },
   { t: "Co-hosted Activations", d: "Yas Marina, hospitality, and lifestyle integrations under your brand." },
   { t: "Exclusivity", d: "One partner per category. Protected positioning, by design." },
@@ -41,13 +42,13 @@ const Partnership = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <a
-            href="#contact"
+          <Link
+            to="/partner"
             className="inline-flex items-center gap-4 text-xs tracking-luxury uppercase border border-primary/60 px-8 py-4 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500"
           >
             Partner With Us
             <span className="w-6 h-px bg-current" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

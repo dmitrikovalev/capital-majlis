@@ -9,9 +9,9 @@ const stats = [
 ];
 
 const breakdown = [
-  { label: "Business Owners & Executives", pct: 42 },
+  { label: "Business Owners", pct: 42 },
   { label: "Collectors & Investors", pct: 28 },
-  { label: "Royal & Government Figures", pct: 18 },
+  { label: "Executives", pct: 18 },
   { label: "International Members", pct: 12 },
 ];
 

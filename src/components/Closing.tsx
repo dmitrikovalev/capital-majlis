@@ -33,12 +33,12 @@ const Closing = () => {
           >
             Join the Society
           </a>
-          <a
-            href="#contact"
+          <Link
+            to="/partner"
             className="border border-primary/40 text-foreground px-10 py-5 text-xs tracking-luxury uppercase hover:border-primary hover:text-primary transition-all duration-500"
           >
             Partner With Us
-          </a>
+          </Link>
         </div>
       </div>
     </section>
