@@ -4,53 +4,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ADMSOC — Dark luxury design system. All colors HSL. */
+/* ADMSOC — Monochrome + red-accent design system (event-aligned). All colors HSL. */
 
 @layer base {
   :root {
     /* Deep blacks & charcoals */
     --background: 0 0% 4%;
-    --foreground: 40 20% 92%;
+    --foreground: 0 0% 95%;
 
     --card: 0 0% 6%;
-    --card-foreground: 40 20% 92%;
+    --card-foreground: 0 0% 95%;
 
     --popover: 0 0% 5%;
-    --popover-foreground: 40 20% 92%;
+    --popover-foreground: 0 0% 95%;
 
-    /* Gold — signature accent */
-    --primary: 42 55% 58%;
-    --primary-foreground: 0 0% 6%;
-    --primary-glow: 45 80% 70%;
-    --primary-deep: 38 60% 38%;
+    /* Red — signature accent (deep, restrained crimson) */
+    --primary: 0 72% 50%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 0 85% 60%;
+    --primary-deep: 0 70% 38%;
 
     --secondary: 0 0% 10%;
-    --secondary-foreground: 40 20% 92%;
+    --secondary-foreground: 0 0% 95%;
 
     --muted: 0 0% 9%;
-    --muted-foreground: 40 8% 60%;
+    --muted-foreground: 0 0% 62%;
 
-    --accent: 42 55% 58%;
-    --accent-foreground: 0 0% 6%;
+    --accent: 0 72% 50%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 70% 50%;
+    /* Destructive kept distinct from the accent: warmer, orange-leaning */
+    --destructive: 14 80% 48%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 40 15% 16%;
+    --border: 0 0% 16%;
     --input: 0 0% 10%;
-    --ring: 42 55% 58%;
+    --ring: 0 72% 50%;
 
     --radius: 0.25rem;
 
-    /* Semantic gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(45 80% 70%) 0%, hsl(42 55% 58%) 50%, hsl(38 60% 38%) 100%);
-    --gradient-radial-gold: radial-gradient(circle at 50% 50%, hsl(42 55% 58% / 0.15) 0%, transparent 70%);
+    /* Semantic gradients (names kept for compatibility; now red) */
+    --gradient-gold: linear-gradient(135deg, hsl(0 85% 60%) 0%, hsl(0 72% 50%) 50%, hsl(0 70% 38%) 100%);
+    --gradient-radial-gold: radial-gradient(circle at 50% 50%, hsl(0 72% 50% / 0.12) 0%, transparent 70%);
     --gradient-fade-bottom: linear-gradient(to bottom, transparent 0%, hsl(0 0% 4%) 100%);
     --gradient-fade-top: linear-gradient(to top, transparent 0%, hsl(0 0% 4%) 100%);
     --gradient-vignette: radial-gradient(ellipse at center, transparent 40%, hsl(0 0% 0% / 0.85) 100%);
 
     /* Shadows */
-    --shadow-gold: 0 10px 40px -10px hsl(42 55% 58% / 0.4);
+    --shadow-gold: 0 10px 40px -10px hsl(0 72% 50% / 0.35);
     --shadow-deep: 0 30px 80px -20px hsl(0 0% 0% / 0.8);
 
     /* Transitions */
@@ -100,6 +101,15 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Platinum — dimensional white/silver sheen for display headings (gold-free premium) */
+  .text-platinum {
+    background: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 90%) 42%, hsl(0 0% 68%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 1px 1px hsl(0 0% 0% / 0.45));
   }
 
   .bg-gold { background: var(--gradient-gold); }
